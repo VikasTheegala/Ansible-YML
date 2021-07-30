@@ -1,0 +1,19 @@
+---
+- name: ensure web servers are updated
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: ensure httpd is installed
+    package:
+        name: httpd
+        state: present
+  - name: ensure httpd is started
+    service:
+        name: httpd
+        state: started
+  - name: ensure httpd is enabled
+    service:
+        name: httpd
+        enabled: yes
+  
